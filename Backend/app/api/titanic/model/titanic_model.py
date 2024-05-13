@@ -12,10 +12,10 @@ class TitanicModel:
     label: str
 
     @property
-    def context(self) -> str: return self._context
+    def content(self) -> str: return self.content
 
-    @context.setter
-    def context(self, context): self._context = context
+    @content.setter
+    def content(self, content): self._content = content
 
     @property
     def fname(self) -> str: return self._fname

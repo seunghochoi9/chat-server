@@ -24,7 +24,7 @@ export default function Home() {
   } = useForm<Inputs>()
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log('입력된 값 : ' + JSON.stringify(data))
-    fetch('http://localhost:8000/titanic', {
+    fetch('http://localhost:8000/api/chat/titanic', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,26 +67,41 @@ export default function Home() {
   <div className="left-[1203px] top-[19px] absolute justify-start items-start inline-flex">
     <div className="p-1 bg-neutral-100 rounded-lg justify-start items-start flex">
       <div className="w-[65px] px-3 bg-white rounded shadow justify-start items-center gap-2 flex">
-        <div className="text-black text-base font-medium font-['Inter'] leading-normal">타이타닉</div>
+        <button className="text-black text-base font-medium font-['Inter'] leading-normal">titanic</button>
       </div>
       <div className="w-[67px] px-3 rounded justify-start items-center gap-2 flex">
-        <div className="text-black text-base font-medium font-['Inter'] leading-normal">Tab 2</div>
+        <button className="text-black text-base font-medium font-['Inter'] leading-normal">Tab 2</button>
       </div>
       <div className="w-[67px] px-3 rounded justify-start items-center gap-2 flex">
-        <div className="text-black text-base font-medium font-['Inter'] leading-normal">Tab 3</div>
+        <button className="text-black text-base font-medium font-['Inter'] leading-normal">Tab 3</button>
       </div>
     </div>
-  </div>
-  
-  <div className="w-[827px] h-[101px] px-4 py-2 left-[326px] top-[944px] absolute bg-white rounded-lg border border-neutral-200 justify-start items-center gap-4 inline-flex">
-  <form onSubmit={handleSubmit(onSubmit)}>
-          <input type="text" {...register("question", { required: true })} className="w-full mb-4 p-3 border border-gray-300 rounded" onChange={wrtieHandle} />
-          <button type="submit" className="w-full py-3 bg-blue-500 text-white font-bold rounded">전송</button>
-        </form>
-        {errors.question && <span>This field is required</span>}
-    <div className="grow shrink basis-0 text-zinc-500 text-base font-normal font-['Inter'] leading-normal">Enter your message</div>
 
   </div>
+    
+  <div className="flex items-center justify-center h-screen">
+  <form className="max-w-md mx-auto" onSubmit={handleSubmit(onSubmit)}>   
+    <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+    <div className="relative">
+        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+        </div>
+        <input  {...register("question", { required: true })} onChange={wrtieHandle} type="search" id="default-search" className="block w-full p-4 ps-10 text-sm 
+        text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 
+        dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+        placeholder="Search Mockups, Logos..." required />
+        <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none 
+        focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+    </div>
+    {errors.question && <span>This field is required</span>}
+</form>
+</div>
+
+  
+
+
   
   <div className="h-[280px] left-[650px] top-[19px] absolute flex-col justify-center items-center gap-6 inline-flex">
     <div className="self-stretch text-center text-black text-[64px] font-bold font-['Inter']">Chat Bot</div>

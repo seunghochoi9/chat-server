@@ -20,7 +20,7 @@ class Response(BaseModel):
     
 app = FastAPI()
 
-app.include_router(router)
+app.include_router(router, prefix="/api")
 
 origins = ['*']
 
