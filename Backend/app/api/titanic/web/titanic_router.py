@@ -15,11 +15,14 @@ class Response(BaseModel):
 @router.post("/titanic")
 async def titanic(req:Request):
     print('타이타닉 딕셔너리 내용')
+
     hello = 'C:\\Users\\bitcamp\\kubernetes\\chat-server\\Backend\\app\\api\\titanic\\data\\hello.txt'
     f = open(hello, "r", encoding="utf-8")
     data = f.read()
     print(data)
     f.close()
-    service.process()
+
+    service.preprocess()
+
     print(req)
-    return {"titanic": "titanic Router"}
+    return {"titanic": service.learning()}
