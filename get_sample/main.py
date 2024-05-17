@@ -28,8 +28,8 @@ async def IsLeapYear():
         return (f"{year}윤년이 아닙니다.")
 
 @app.get("/grade")
-async def grade():
-    Grade.__init__()
+async def getG():
+    Grade.grade3()
     return {"message": "grade"}
 
 
