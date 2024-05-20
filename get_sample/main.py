@@ -1,7 +1,8 @@
+import os
+from dotenv import load_dotenv
 from fastapi import FastAPI
 import uvicorn
 
-from example.rps import RPS
 from example.leap_year import LeapYear
 from example.utils import myRandom
 from example.grade import Grade
@@ -9,15 +10,15 @@ from example.grade import Grade
 
 app = FastAPI()
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+load_dotenv(os.path.join(BASE_DIR, ".env"))
+API_KEY = os.environ.get("API_KEY")
 
 @app.get("/")
 async def root():
     # m = BMI()
     return {"message": "Hello World 3"}
 
-@app.get("/rps")
-async def rps():
-    return RPS.my3()
 
 @app.get("/isLeapYear")
 async def IsLeapYear():
